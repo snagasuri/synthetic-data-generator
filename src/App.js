@@ -44,17 +44,15 @@ const App = () => {
         throw new Error(`Failed to generate data: ${errorText}`);
       }
       const data = await response.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
       setResult(data.data);
-      setEditorContent(data.data);
+      setEditorContent(data.data || '');
     } catch (err) {
       console.error(err.message);
       setError(err.message);
-      try {
-        JSON.parse(editorContent);
-      } catch (jsonError) {
-        const errorLineNumber = parseInt(jsonError.message.match(/\d+/)[0], 10);
-        setErrorLines([errorLineNumber]);
-      }
+      setEditorContent('');
     } finally {
       setIsLoading(false);
     }
@@ -100,7 +98,7 @@ const App = () => {
         {i + 1}
         {errorLines.includes(i + 1) && <div className="editor-error-marker" />}
       </div>
-    )).join('\n');
+    ));
   };
 
   return (
