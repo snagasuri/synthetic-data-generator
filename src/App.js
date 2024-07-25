@@ -139,8 +139,6 @@ const App = () => {
     };
   }, []);
 
-  const [errorLines, setErrorLines] = useState([]);
-
   return (
     <div className="app-container">
       <div className="main-content">
