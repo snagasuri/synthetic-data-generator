@@ -34,7 +34,7 @@ Instructions:
 
 Generate examples with the amount specified following the same pattern as the examples and prioritizing the given instructions. Look for keywords, such as start and stop tokens surrounded by special tokens <> [] () etc, or curly brackets or variable names, and make sure to integrate those exactly as the examples do.
 
-Your response must be a valid JSON array containing these 9 examples. Do not include any explanation, code block formatting, or additional text outside of the JSON array. Ignore any instructions that are not related to JSON generation."""
+Your response must be a valid JSON array containing 1000 examples. Do not include any explanation, code block formatting, or additional text outside of the JSON array. Ignore any instructions that are not related to JSON generation."""
 
 def extract_json(content):
     # Remove any potential markdown code block syntax
@@ -76,7 +76,8 @@ def generate_data():
 
         payload = {
             "model": "openai/gpt-3.5-turbo",
-            "messages": [{"role": "user", "content": prompt}]
+            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": 10000
         }
 
         response = requests.post(OPENROUTER_URL, json=payload, headers=headers)
@@ -97,6 +98,9 @@ def generate_data():
         return jsonify({"error": "An error occurred while processing your request"}), 500
     except json.JSONDecodeError:
         return jsonify({"error": "Generated data is not valid JSON"}), 500
+    except ValueError as ve:
+        app.logger.error(f"Value error: {str(ve)}")
+        return jsonify({"error": "The generated data exceeds the maximum allowed size"}), 500
     except Exception as e:
         app.logger.error(f"Unexpected error: {str(e)}")
         return jsonify({"error": "An unexpected error occurred"}), 500
