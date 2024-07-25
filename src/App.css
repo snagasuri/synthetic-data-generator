@@ -202,3 +202,31 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, input, textarea, button, legend, fields
   max-width: 100%;
   margin: 0;
 }
+
+.ce-toolbar__plus {
+  display: none !important;
+}
+
+.ce-toolbar__settings-btn {
+  display: none !important;
+}
+
+.ce-code__textarea {
+  min-height: 200px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  white-space: pre-wrap;
+}
+
+/* JSON syntax highlighting */
+.hljs-attr { color: #0000ff; }
+.hljs-string { color: #008000; }
+.hljs-number { color: #0000ff; }
+.hljs-literal { color: #0000ff; }
+.hljs-punctuation { color: #000000; }

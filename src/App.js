@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import EditorJS from '@editorjs/editorjs';
-import Header from '@editorjs/header';
-import Paragraph from '@editorjs/paragraph';
+import CodeTool from '@editorjs/code';
 import './App.css';
 
 const App = () => {
@@ -58,12 +57,14 @@ const App = () => {
       }
       setResult(data.data);
       if (editorInstanceRef.current) {
+        const formattedJson = JSON.stringify(JSON.parse(data.data), null, 2);
         editorInstanceRef.current.render({
           blocks: [
             {
-              type: 'paragraph',
+              type: 'code',
               data: {
-                text: data.data || ''
+                code: formattedJson,
+                language: 'json',
               }
             }
           ]
@@ -103,9 +104,15 @@ const App = () => {
       editorInstanceRef.current = new EditorJS({
         holder: editorRef.current,
         tools: {
-          header: Header,
-          paragraph: Paragraph,
+          code: {
+            class: CodeTool,
+            config: {
+              placeholder: 'Enter JSON here',
+              language: 'json',
+            },
+          },
         },
+        minHeight: 0,
         data: editorContent,
         onChange: async () => {
           const content = await editorInstanceRef.current.save();
