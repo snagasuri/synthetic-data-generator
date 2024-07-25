@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 :root {
   --background: #0e1726;
   --foreground: #e6f1ff;
   --border: #1e2a38;
-  --primary: #2563eb;
+  --primary: #4a90e2;
+  --primary-dark: #357ABD;
   --muted: #4b5563;
 }
 
@@ -12,7 +15,7 @@
 
 body {
   margin: 0;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: var(--background);
   color: var(--foreground);
 }
@@ -42,6 +45,7 @@ body {
 .header-title {
   font-size: 1.5rem;
   font-weight: 700;
+  font-family: 'Lora', serif;
   color: var(--foreground);
 }
 
@@ -91,10 +95,13 @@ body {
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
 }
 
 .button:hover {
-  background-color: #1d4ed8;
+  background-color: var(--primary-dark);
 }
 
 .output-section {
@@ -125,11 +132,14 @@ body {
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
+  font-family: 'Lora', serif;
+  font-weight: 600;
   margin-right: 0.5rem;
+  transition: background-color 0.3s ease;
 }
 
 .save-button:hover {
-  background-color: #1d4ed8;
+  background-color: var(--primary-dark);
 }
 
 .download-button {
@@ -139,10 +149,13 @@ body {
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
 }
 
 .download-button:hover {
-  background-color: #1d4ed8;
+  background-color: var(--primary-dark);
 }
 
 .editor-container {
@@ -161,164 +174,4 @@ body {
   border: 1px solid #f5c6cb;
   padding: 1rem;
   border-radius: 0.5rem;
-}
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-:root {
-  --background: #f3f4f6;
-  --surface: #ffffff;
-  --primary: #3b82f6;
-  --primary-dark: #2563eb;
-  --text: #1f2937;
-  --text-light: #6b7280;
-  --border: #e5e7eb;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--background);
-  color: var(--text);
-  line-height: 1.5;
-}
-
-.app-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.main-content {
-  background-color: var(--surface);
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  overflow: hidden;
-}
-
-.header {
-  background-color: var(--surface);
-  padding: 1.5rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.header-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--text);
-  margin: 0;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 2rem;
-}
-
-.settings {
-  flex: 1;
-}
-
-.settings-section {
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.375rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
-.settings-section-title {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 0.5rem;
-}
-
-.input {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid var(--border);
-  border-radius: 0.25rem;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.875rem;
-  resize: vertical;
-  background-color: var(--surface);
-  transition: border-color 0.15s ease-in-out;
-}
-
-.input:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-.button {
-  background-color: var(--primary);
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border-radius: 0.375rem;
-  cursor: pointer;
-  transition: background-color 0.15s ease-in-out;
-}
-
-.button:hover {
-  background-color: var(--primary-dark);
-}
-
-.output-section {
-  flex: 1;
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.375rem;
-  padding: 1.5rem;
-}
-
-.output-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.output-title {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text);
-}
-
-.save-button,
-.download-button {
-  background-color: var(--surface);
-  color: var(--primary);
-  border: 1px solid var(--primary);
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border-radius: 0.375rem;
-  cursor: pointer;
-  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
-}
-
-.save-button:hover,
-.download-button:hover {
-  background-color: var(--primary);
-  color: white;
-}
-
-.editor-container {
-  border: 1px solid var(--border);
-  border-radius: 0.375rem;
-  overflow: hidden;
-  background-color: var(--surface);
-}
-
-.error-message {
-  background-color: #fee2e2;
-  color: #991b1b;
-  border: 1px solid #fecaca;
-  padding: 1rem;
-  border-radius: 0.375rem;
-  margin-top: 1rem;
 }
