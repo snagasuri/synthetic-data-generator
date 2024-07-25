@@ -134,13 +134,7 @@ const App = () => {
                 onValueChange={(code) => setEditorContent(code)}
                 highlight={(code) => Prism.highlight(code, Prism.languages.json, 'json')}
                 padding={10}
-                style={{
-                  fontFamily: '"Fira code", "Fira Mono", monospace',
-                  fontSize: 12,
-                  border: '1px solid var(--border)',
-                  borderRadius: '0.5rem',
-                  minHeight: '400px',
-                }}
+                className="code-editor"
               />
             </div>
           </div>

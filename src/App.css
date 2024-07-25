@@ -162,3 +162,143 @@ body {
   padding: 1rem;
   border-radius: 0.5rem;
 }
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+  --background: #f5f5f5;
+  --surface: #ffffff;
+  --primary: #333333;
+  --secondary: #666666;
+  --border: #e0e0e0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background);
+  color: var(--primary);
+  line-height: 1.6;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.main-content {
+  background-color: var(--surface);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.header {
+  background-color: var(--surface);
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-title {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--primary);
+  margin: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.settings {
+  flex: 1;
+}
+
+.settings-section {
+  border: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.settings-section-title {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+.button {
+  background-color: var(--primary);
+  color: var(--surface);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--secondary);
+}
+
+.output-section {
+  flex: 1;
+}
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.output-title {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--secondary);
+}
+
+.save-button,
+.download-button {
+  background-color: var(--surface);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover,
+.download-button:hover {
+  background-color: var(--background);
+}
+
+.editor-container {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
