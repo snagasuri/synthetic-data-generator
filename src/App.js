@@ -13,6 +13,7 @@ const App = () => {
       }
     }
   };
+
   const [examples, setExamples] = useState('');
   const [instructions, setInstructions] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -57,22 +58,49 @@ const App = () => {
       }
       setResult(data.data);
       if (editorInstanceRef.current) {
-        const formattedJson = JSON.stringify(JSON.parse(data.data), null, 2);
+        try {
+          const formattedJson = JSON.stringify(JSON.parse(data.data), null, 2);
+          editorInstanceRef.current.render({
+            blocks: [
+              {
+                type: 'code',
+                data: {
+                  code: formattedJson,
+                  language: 'json',
+                },
+              },
+            ],
+          });
+        } catch (err) {
+          editorInstanceRef.current.render({
+            blocks: [
+              {
+                type: 'code',
+                data: {
+                  code: data.data,
+                  language: 'json',
+                },
+              },
+            ],
+          });
+        }
+      }
+    } catch (err) {
+      console.error(err.message);
+      setError('Generated JSON is not valid. Step through errors and fix manually, or regenerate.');
+      if (editorInstanceRef.current) {
         editorInstanceRef.current.render({
           blocks: [
             {
               type: 'code',
               data: {
-                code: formattedJson,
+                code: result,
                 language: 'json',
-              }
-            }
-          ]
+              },
+            },
+          ],
         });
       }
-    } catch (err) {
-      console.error(err.message);
-      setError("Generated JSON is not valid. Step through errors and fix manually, or regenerate.");
     } finally {
       setIsLoading(false);
     }
@@ -177,7 +205,7 @@ const App = () => {
                   onChange={handleInputChange}
                   rows="4"
                   className="input"
-                  placeholder="number of examples, start and stop tokens, etc"
+                  placeholder="number of examples, start and stop tokens, keywords you want removed/replaced, et cetera"
                 ></textarea>
               </fieldset>
               <button type="submit" className="button" disabled={isLoading}>

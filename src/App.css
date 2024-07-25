@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap');
 
 :root {
   --background: #e6d8c8; /* Slightly darker cream */
@@ -16,13 +16,13 @@
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lora', serif;
   background-color: var(--background);
   color: var(--foreground);
 }
 
 h1, h2, h3, h4, h5, h6, p, span, div, a, input, textarea, button, legend, fieldset {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lora', serif;
 }
 
 .app-container {
@@ -50,7 +50,6 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, input, textarea, button, legend, fields
 .header-title {
   font-size: 1.5rem;
   font-weight: 700;
-  font-family: 'Lora', serif;
   color: var(--foreground);
 }
 
@@ -76,7 +75,6 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, input, textarea, button, legend, fields
 .settings-section-title {
   font-weight: 700;
   margin-bottom: 0.5rem;
-  font-family: 'Roboto', sans-serif;
 }
 
 .input {
@@ -118,6 +116,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, input, textarea, button, legend, fields
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  flex-grow: 1;
 }
 
 .output-header {
@@ -129,7 +128,6 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, input, textarea, button, legend, fields
 
 .output-title {
   font-weight: 700;
-  font-family: 'Roboto', sans-serif;
 }
 
 .button-group {
@@ -183,17 +181,6 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, input, textarea, button, legend, fields
   line-height: 1.5;
 }
 
-.editor-container {
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  min-height: 600px;
-  background-color: #ffffff;
-  position: relative;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
 .codex-editor {
   padding: 10px;
 }
@@ -212,7 +199,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, input, textarea, button, legend, fields
 }
 
 .ce-code__textarea {
-  min-height: 200px;
+  min-height: 600px; /* Ensure it doesn't shrink */
   font-family: 'Roboto Mono', monospace;
   font-size: 14px;
   line-height: 1.5;

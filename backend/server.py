@@ -75,9 +75,9 @@ def generate_data():
         }
 
         payload = {
-            "model": "meta-llama/llama-3.1-8b-instruct:free",  # Using a model with larger context
+            "model": "openai/gpt-4o-mini",  
             "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": 15000  # Increased max tokens
+            "max_tokens": 50000  # Increased max tokens
         }
 
         response = requests.post(OPENROUTER_URL, json=payload, headers=headers)
@@ -86,7 +86,7 @@ def generate_data():
         generated_data = response.json()['choices'][0]['message']['content']
         json_data = extract_json(generated_data)
 
-        # We're not validating JSON here anymore
+        # we're not validating json here anymore
         return jsonify({"data": json_data})
 
     except BadRequest as br:
@@ -94,9 +94,6 @@ def generate_data():
     except requests.RequestException as re:
         app.logger.error(f"API request failed: {str(re)}")
         return jsonify({"error": "An error occurred while processing your request"}), 500
-    except ValueError as ve:
-        app.logger.error(f"Value error: {str(ve)}")
-        return jsonify({"error": "The generated data exceeds the maximum allowed size"}), 500
     except Exception as e:
         app.logger.error(f"Unexpected error: {str(e)}")
         return jsonify({"error": "An unexpected error occurred"}), 500
