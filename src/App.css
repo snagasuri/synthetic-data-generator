@@ -186,9 +186,12 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, input, textarea, button, legend, fields
 .editor-container {
   border: 1px solid var(--border);
   border-radius: 0.5rem;
-  min-height: 400px;
+  min-height: 600px;
   background-color: #ffffff;
-  overflow: auto;
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .codex-editor {
