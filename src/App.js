@@ -5,6 +5,15 @@ import Paragraph from '@editorjs/paragraph';
 import './App.css';
 
 const App = () => {
+  const handleJumpToError = () => {
+    if (errorLines.length > 0 && editorInstanceRef.current) {
+      const firstErrorBlock = editorInstanceRef.current.blocks.getBlockByIndex(errorLines[0] - 1);
+      if (firstErrorBlock) {
+        editorInstanceRef.current.caret.setToBlock(firstErrorBlock.id, 'start');
+        firstErrorBlock.holder.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  };
   const [examples, setExamples] = useState('');
   const [instructions, setInstructions] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -109,7 +118,7 @@ const App = () => {
   useEffect(() => {
     initializeEditor();
     return () => {
-      if (editorInstanceRef.current) {
+      if (editorInstanceRef.current && typeof editorInstanceRef.current.destroy === 'function') {
         editorInstanceRef.current.destroy();
         editorInstanceRef.current = null;
       }
@@ -139,6 +148,8 @@ const App = () => {
       }
     }
   };
+
+  const [errorLines, setErrorLines] = useState([]);
 
   return (
     <div className="app-container">
