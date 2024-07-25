@@ -165,16 +165,16 @@ body {
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
 :root {
-  --background: #f5f5f5;
-  --surface: #ffffff;
+  --background: transparent;
+  --surface: transparent;
   --primary: #333333;
   --secondary: #666666;
-  --border: #e0e0e0;
+  --border: rgba(0, 0, 0, 0.2);
 }
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: var(--background);
+  background-color: #f5f5f5;
   color: var(--primary);
   line-height: 1.6;
 }
@@ -187,15 +187,15 @@ body {
 
 .main-content {
   background-color: var(--surface);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--border);
+  border-radius: 12px;
   overflow: hidden;
 }
 
 .header {
   background-color: var(--surface);
   padding: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--border);
 }
 
 .header-title {
@@ -217,8 +217,9 @@ body {
 }
 
 .settings-section {
-  border: none;
-  padding: 0;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
   margin-bottom: 1.5rem;
 }
 
@@ -232,31 +233,35 @@ body {
 .input {
   width: 100%;
   padding: 0.8rem;
-  border: 1px solid var(--border);
-  border-radius: 4px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
   font-family: 'Roboto', sans-serif;
   font-size: 0.9rem;
   resize: vertical;
+  background-color: var(--background);
 }
 
 .button {
-  background-color: var(--primary);
-  color: var(--surface);
-  border: none;
+  background-color: var(--background);
+  color: var(--primary);
+  border: 2px solid var(--border);
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
   font-weight: 400;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .button:hover {
-  background-color: var(--secondary);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .output-section {
   flex: 1;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 .output-header {
@@ -274,31 +279,33 @@ body {
 
 .save-button,
 .download-button {
-  background-color: var(--surface);
+  background-color: var(--background);
   color: var(--primary);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .save-button:hover,
 .download-button:hover {
-  background-color: var(--background);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .editor-container {
-  border: 1px solid var(--border);
-  border-radius: 4px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
   overflow: hidden;
+  background-color: #ffffff;
 }
 
 .error-message {
-  background-color: #ffebee;
+  background-color: rgba(255, 0, 0, 0.1);
   color: #c62828;
+  border: 2px solid rgba(198, 40, 40, 0.5);
   padding: 1rem;
-  border-radius: 4px;
+  border-radius: 6px;
   margin-top: 1rem;
 }
