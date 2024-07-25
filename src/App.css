@@ -21,6 +21,10 @@ body {
   color: var(--foreground);
 }
 
+h1, h2, h3, h4, h5, h6, p, span, div, a, input, textarea, button, legend, fieldset {
+  font-family: 'Roboto', sans-serif;
+}
+
 .app-container {
   display: flex;
   min-height: 100vh;
