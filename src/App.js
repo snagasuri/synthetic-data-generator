@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Editor from 'react-simple-code-editor';
-import Prism from 'prismjs';
-import 'prismjs/themes/prism.css';
-import 'prismjs/components/prism-json';
+import EditorJS from '@editorjs/editorjs';
+import Header from '@editorjs/header';
+import Paragraph from '@editorjs/paragraph';
 import './App.css';
 
 const App = () => {
@@ -11,9 +10,9 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
-  const [editorContent, setEditorContent] = useState('');
-  const [errorLines, setErrorLines] = useState([]);
+  const [editorContent, setEditorContent] = useState({});
   const editorRef = useRef(null);
+  const editorInstanceRef = useRef(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -48,7 +47,18 @@ const App = () => {
         setError(data.error);
       }
       setResult(data.data);
-      setEditorContent(data.data || '');
+      if (editorInstanceRef.current) {
+        editorInstanceRef.current.render({
+          blocks: [
+            {
+              type: 'paragraph',
+              data: {
+                text: data.data || ''
+              }
+            }
+          ]
+        });
+      }
     } catch (err) {
       console.error(err.message);
       setError("Generated JSON is not valid. Step through errors and fix manually, or regenerate.");
@@ -57,15 +67,18 @@ const App = () => {
     }
   };
 
-  const handleSave = () => {
-    const jsonData = editorContent;
-    const element = document.createElement('a');
-    const file = new Blob([jsonData], { type: 'text/plain' });
-    element.href = URL.createObjectURL(file);
-    element.download = 'synthetic_data.json';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
+  const handleSave = async () => {
+    if (editorInstanceRef.current) {
+      const outputData = await editorInstanceRef.current.save();
+      const jsonData = JSON.stringify(outputData, null, 2);
+      const element = document.createElement('a');
+      const file = new Blob([jsonData], { type: 'application/json' });
+      element.href = URL.createObjectURL(file);
+      element.download = 'synthetic_data.json';
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+    }
   };
 
   const handleKeyDown = (e) => {
@@ -160,22 +173,7 @@ const App = () => {
                 <strong>Error:</strong> {error}
               </div>
             )}
-            <div ref={editorRef} className="editor-container">
-              <div className="editor-line-numbers">{renderLineNumbers()}</div>
-              <Editor
-                value={editorContent}
-                onValueChange={(code) => setEditorContent(code)}
-                highlight={(code) => Prism.highlight(code, Prism.languages.json, 'json')}
-                padding={10}
-                className="code-editor"
-                textareaId="codeArea"
-                preClassName="language-json"
-                style={{
-                  fontFamily: '"Roboto Mono", monospace',
-                  fontSize: 14,
-                }}
-              />
-            </div>
+            <div ref={editorRef} className="editor-container"></div>
           </div>
         </main>
       </div>
