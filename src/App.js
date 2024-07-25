@@ -11,6 +11,7 @@ const App = () => {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [editorContent, setEditorContent] = useState({});
+  const [errorLines, setErrorLines] = useState([]);
   const editorRef = useRef(null);
   const editorInstanceRef = useRef(null);
 
@@ -128,6 +129,16 @@ const App = () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
+
+  const handleJumpToError = () => {
+    if (errorLines.length > 0 && editorInstanceRef.current) {
+      const firstErrorBlock = editorInstanceRef.current.blocks.getBlockByIndex(errorLines[0] - 1);
+      if (firstErrorBlock) {
+        editorInstanceRef.current.caret.setToBlock(firstErrorBlock.id, 'start');
+        firstErrorBlock.holder.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  };
 
   return (
     <div className="app-container">
