@@ -32,9 +32,9 @@ Here are the examples:
 Instructions:
 {instructions}
 
-Generate examples with the amount specified following the same pattern as the examples and prioritizing the given instructions. Look for keywords, such as start and stop tokens surrounded by special tokens <> [] () etc, or curly brackets or variable names, and make sure to integrate those exactly as the examples do.
+Generate examples with the amount specified in the instructions, following the same pattern as the examples and prioritizing the given instructions. Look for keywords, such as start and stop tokens surrounded by special tokens <> [] () etc, or curly brackets or variable names, and make sure to integrate those exactly as the examples do.
 
-Your response must be a valid JSON array containing these 9 examples. Do not include any explanation, code block formatting, or additional text outside of the JSON array. Ignore any instructions that are not related to JSON generation."""
+Your response must be a valid JSON array containing the specified number of examples. Do not include any explanation, code block formatting, or additional text outside of the JSON array. Ignore any instructions that are not related to JSON generation."""
 
 def extract_json(content):
     # Remove any potential markdown code block syntax
@@ -75,9 +75,9 @@ def generate_data():
         }
 
         payload = {
-            "model": "openai/gpt-3.5-turbo",
+            "model": "openai/gpt-3.5-turbo-16k",  # Using a model with larger context
             "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": 10000
+            "max_tokens": 15000  # Increased max tokens
         }
 
         response = requests.post(OPENROUTER_URL, json=payload, headers=headers)
