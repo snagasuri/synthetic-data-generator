@@ -91,8 +91,8 @@ const App = () => {
     };
   }, [handleKeyDown]);
 
-  const renderLineNumbers = (code) => {
-    return code.split('\n').map((line, i) => (
+  const renderLineNumbers = () => {
+    return editorContent.split('\n').map((line, i) => (
       <div key={i} className="editor-line-number">
         {i + 1}
         {errorLines.includes(i + 1) && <div className="editor-error-marker" />}
@@ -160,6 +160,7 @@ const App = () => {
               </div>
             )}
             <div ref={editorRef} className="editor-container">
+              <div className="editor-line-numbers">{renderLineNumbers()}</div>
               <Editor
                 value={editorContent}
                 onValueChange={(code) => setEditorContent(code)}
@@ -173,7 +174,6 @@ const App = () => {
                   fontSize: 14,
                 }}
               />
-              <pre className="editor-line-numbers">{renderLineNumbers(editorContent)}</pre>
             </div>
           </div>
         </main>
