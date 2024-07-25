@@ -34,7 +34,7 @@ Instructions:
 
 Generate examples with the amount specified following the same pattern as the examples and prioritizing the given instructions. Look for keywords, such as start and stop tokens surrounded by special tokens <> [] () etc, or curly brackets or variable names, and make sure to integrate those exactly as the examples do.
 
-Your response must be a valid JSON array containing 1000 examples. Do not include any explanation, code block formatting, or additional text outside of the JSON array. Ignore any instructions that are not related to JSON generation."""
+Your response must be a valid JSON array containing these 9 examples. Do not include any explanation, code block formatting, or additional text outside of the JSON array. Ignore any instructions that are not related to JSON generation."""
 
 def extract_json(content):
     # Remove any potential markdown code block syntax
