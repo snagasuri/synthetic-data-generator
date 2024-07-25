@@ -88,31 +88,46 @@ const App = () => {
     }
   };
 
-  const handleJumpToError = () => {
-    if (errorLines.length > 0) {
-      const editorElement = editorRef.current.querySelector('textarea');
-      const lineHeight = parseInt(window.getComputedStyle(editorElement).lineHeight);
-      editorElement.scrollTop = (errorLines[0] - 1) * lineHeight;
+  const initializeEditor = () => {
+    if (!editorInstanceRef.current) {
+      editorInstanceRef.current = new EditorJS({
+        holder: editorRef.current,
+        tools: {
+          header: Header,
+          paragraph: Paragraph,
+        },
+        data: editorContent,
+        onChange: async () => {
+          const content = await editorInstanceRef.current.save();
+          setEditorContent(content);
+        },
+      });
     }
   };
 
   useEffect(() => {
-    const editor = editorRef.current;
-    editor.addEventListener('keydown', handleKeyDown);
+    initializeEditor();
     return () => {
-      editor.removeEventListener('keydown', handleKeyDown);
+      if (editorInstanceRef.current) {
+        editorInstanceRef.current.destroy();
+        editorInstanceRef.current = null;
+      }
     };
-  }, [handleKeyDown]);
+  }, []);
 
-  const renderLineNumbers = () => {
-    const lines = editorContent.split('\n');
-    return lines.map((_, i) => (
-      <div key={i} className="editor-line-number">
-        {i + 1}
-        {errorLines.includes(i + 1) && <div className="editor-error-marker" />}
-      </div>
-    ));
-  };
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && e.key === 's') {
+        e.preventDefault();
+        handleSave();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return (
     <div className="app-container">
