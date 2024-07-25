@@ -128,23 +128,13 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.save-button {
-  padding: 0.5rem 1rem;
-  background-color: var(--primary);
-  color: #fff;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  font-family: 'Lora', serif;
-  font-weight: 600;
-  margin-right: 0.5rem;
-  transition: background-color 0.3s ease;
+.button-group {
+  display: flex;
+  gap: 0.5rem;
 }
 
-.save-button:hover {
-  background-color: var(--primary-dark);
-}
-
+.save-button,
+.jump-to-error-button,
 .download-button {
   padding: 0.5rem 1rem;
   background-color: var(--primary);
@@ -157,6 +147,8 @@ body {
   transition: background-color 0.3s ease;
 }
 
+.save-button:hover,
+.jump-to-error-button:hover,
 .download-button:hover {
   background-color: var(--primary-dark);
 }
@@ -166,15 +158,39 @@ body {
   border-radius: 0.5rem;
   min-height: 400px;
   background-color: #ffffff;
+  position: relative;
 }
 
 .error-message {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
   background-color: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
   padding: 1rem;
   border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.code-editor {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.editor-line-number {
+  position: absolute;
+  left: 0;
+  width: 30px;
+  text-align: right;
+  color: #999;
+  font-size: 12px;
+  user-select: none;
+}
+
+.editor-error-marker {
+  position: absolute;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #f00;
 }
