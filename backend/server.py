@@ -75,7 +75,7 @@ def generate_data():
         }
 
         payload = {
-            "model": "openai/gpt-3.5-turbo-16k",  # Using a model with larger context
+            "model": "meta-llama/llama-3.1-8b-instruct:free",  # Using a model with larger context
             "messages": [{"role": "user", "content": prompt}],
             "max_tokens": 15000  # Increased max tokens
         }
