@@ -86,9 +86,7 @@ def generate_data():
         generated_data = response.json()['choices'][0]['message']['content']
         json_data = extract_json(generated_data)
 
-        # Validate JSON
-        json.loads(json_data)
-
+        # We're not validating JSON here anymore
         return jsonify({"data": json_data})
 
     except BadRequest as br:
@@ -96,8 +94,6 @@ def generate_data():
     except requests.RequestException as re:
         app.logger.error(f"API request failed: {str(re)}")
         return jsonify({"error": "An error occurred while processing your request"}), 500
-    except json.JSONDecodeError:
-        return jsonify({"error": "Generated data is not valid JSON"}), 500
     except ValueError as ve:
         app.logger.error(f"Value error: {str(ve)}")
         return jsonify({"error": "The generated data exceeds the maximum allowed size"}), 500

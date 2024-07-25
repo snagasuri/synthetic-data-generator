@@ -45,14 +45,13 @@ const App = () => {
       }
       const data = await response.json();
       if (data.error) {
-        throw new Error(data.error);
+        setError(data.error);
       }
       setResult(data.data);
       setEditorContent(data.data || '');
     } catch (err) {
       console.error(err.message);
-      setError(err.message);
-      setEditorContent('');
+      setError("Generated JSON is not valid. Step through errors and fix manually, or regenerate.");
     } finally {
       setIsLoading(false);
     }
