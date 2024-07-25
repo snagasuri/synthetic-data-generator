@@ -181,55 +181,18 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, input, textarea, button, legend, fields
 }
 
 .editor-container {
-  position: relative;
-  display: flex;
-}
-
-.editor-line-numbers {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 30px;
-  background-color: #f7f7f7;
-  border-right: 1px solid #ddd;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #999;
-  text-align: right;
-  user-select: none;
-  overflow-y: hidden;
-  padding: 10px 0;
-}
-
-.editor-line-number {
-  padding: 0 5px;
-  position: relative;
-  height: 1.5em;
-}
-
-.editor-container {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  min-height: 400px;
+  background-color: #ffffff;
   overflow: auto;
-  max-height: 400px;
 }
 
-.code-editor {
-  min-height: 100%;
+.codex-editor {
+  padding: 10px;
 }
 
-.editor-error-marker {
-  position: absolute;
-  left: 4px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #f00;
-}
-
-.code-editor {
-  margin-left: 30px;
-  width: calc(100% - 30px);
+.ce-block__content {
+  max-width: 100%;
+  margin: 0;
 }
