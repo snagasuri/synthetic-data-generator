@@ -139,16 +139,6 @@ const App = () => {
     };
   }, []);
 
-  const handleJumpToError = () => {
-    if (errorLines.length > 0 && editorInstanceRef.current) {
-      const firstErrorBlock = editorInstanceRef.current.blocks.getBlockByIndex(errorLines[0] - 1);
-      if (firstErrorBlock) {
-        editorInstanceRef.current.caret.setToBlock(firstErrorBlock.id, 'start');
-        firstErrorBlock.holder.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }
-  };
-
   const [errorLines, setErrorLines] = useState([]);
 
   return (
