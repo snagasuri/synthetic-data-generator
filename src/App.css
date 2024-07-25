@@ -189,7 +189,6 @@ body {
   width: 30px;
   background-color: #f7f7f7;
   border-right: 1px solid #ddd;
-  padding: 10px 0;
   font-family: 'Roboto Mono', monospace;
   font-size: 12px;
   line-height: 1.5;
@@ -197,11 +196,22 @@ body {
   text-align: right;
   user-select: none;
   overflow-y: hidden;
+  padding: 10px 0;
 }
 
 .editor-line-number {
-  padding-right: 5px;
+  padding: 0 5px;
   position: relative;
+  height: 1.5em;
+}
+
+.editor-container {
+  overflow: auto;
+  max-height: 400px;
+}
+
+.code-editor {
+  min-height: 100%;
 }
 
 .editor-error-marker {

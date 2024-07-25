@@ -92,7 +92,8 @@ const App = () => {
   }, [handleKeyDown]);
 
   const renderLineNumbers = () => {
-    return editorContent.split('\n').map((line, i) => (
+    const lines = editorContent.split('\n');
+    return lines.map((_, i) => (
       <div key={i} className="editor-line-number">
         {i + 1}
         {errorLines.includes(i + 1) && <div className="editor-error-marker" />}
