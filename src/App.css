@@ -1,0 +1,164 @@
+:root {
+  --background: #0e1726;
+  --foreground: #e6f1ff;
+  --border: #1e2a38;
+  --primary: #2563eb;
+  --muted: #4b5563;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Fira Sans', sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--background);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--background);
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.content {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+  flex: 1;
+}
+
+.settings {
+  flex: 1;
+  background-color: #15202b;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.settings-section {
+  margin-bottom: 1rem;
+}
+
+.settings-section-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  background-color: #1e2a38;
+  color: var(--foreground);
+}
+
+.input::placeholder {
+  color: var(--muted);
+}
+
+.button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #1d4ed8;
+}
+
+.output-section {
+  flex: 2;
+  background-color: #15202b;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.output-title {
+  font-weight: 700;
+}
+
+.save-button {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.save-button:hover {
+  background-color: #1d4ed8;
+}
+
+.download-button {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.download-button:hover {
+  background-color: #1d4ed8;
+}
+
+.editor-container {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  min-height: 400px;
+  background-color: #1e2a38;
+}
+
+.error-message {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
