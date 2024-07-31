@@ -13,3 +13,7 @@ generate synthetic chat data for finetuning language models
 
 - in root, run npm start in terminal
 - in backend, run python server.py
+
+# demo
+  <img width="1510" alt="image" src="https://github.com/user-attachments/assets/5611941c-64f3-4605-88cb-3fee9a8c1f87">
+
