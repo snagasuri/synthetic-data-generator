@@ -12,7 +12,7 @@ generate synthetic data for finetuning language models
 # demo
   <img width="1510" alt="image" src="https://github.com/user-attachments/assets/5611941c-64f3-4605-88cb-3fee9a8c1f87">
 
-# example json used
+# example json
 ```json
 {
     "glossary": {
